@@ -1,0 +1,51 @@
+#include <iostream>
+using namespace std;
+
+template <class T>
+void sortArray() {
+    int i, j, min, n;
+    T temp;
+    T a[10];
+    cout << "\n Enter number of elements you want to sort: ";
+    cin >> n;
+    cout << "Enter the elements:\n";
+    for (i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+    for (i = 0; i < n; i++) {
+        min = i;
+        for (j = i + 1; j < n; j++) {
+            if (a[j] < a[min]) {
+                min = j;
+            }
+        }
+        if (min != i) {
+            temp = a[i];
+            a[i] = a[min];
+            a[min] = temp;
+        }
+    }
+    cout << "\nThe array in the sorted order is:\n";
+    for (i = 0; i < n; i++) {
+        cout << "\t" << a[i];
+    }
+    cout << endl;
+}
+
+int main() {
+    int choice;
+    char ans;
+    do {
+        cout << "\n1. Integer sort.\n2. Float sort.\n";
+        cout << "Enter the input you want to sort: ";
+        cin >> choice;
+        switch (choice) {
+            case 1: sortArray<int>(); break;
+            case 2: sortArray<float>(); break;
+            default: cout << "\nInvalid choice.\n"; break;
+        }
+        cout << "\nDo you wish to continue (Y/N)? ";
+        cin >> ans;
+    } while (ans == 'Y' || ans == 'y');
+    return 0;
+}

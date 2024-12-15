@@ -1,0 +1,157 @@
+#include <iostream>
+using namespace std;
+class personal
+{
+ protected:
+	char name[50];
+	char add[50];
+	char birth[12];
+	int age;
+	char phone[10];
+           char bdgrp[30];
+public:
+	void accept1();
+	void display1();
+};
+void personal::accept1()
+{
+	cout<<"\n enter your name:";
+	cin>>name;
+	cout<<"\n enter your age:";
+	cin>>age;
+	if(age>18&&age<50)
+	{
+		cout<<"\n enter your address :";
+                              cin>>add;
+                              cout<<"\n enter your birth date(DD/MM/YY):";
+                              cin>>birth;
+                                 mob:
+                             cout<<"\n enter valid mobile number:";
+                             cin>>phone;
+                          /*int phonelen=strlen(phone);
+                             if(phonelen!=10)
+                                  {
+                                         goto mob;
+                                  }
+                                else
+                                   {
+                                          bg:
+                                       cout<<"\n enter your blood group:";
+                                         cin>>bdgrp;
+                                    }*/
+                               }
+                  }
+
+void personal::display1()
+{
+       cout<<"\n name:"<<name;
+       cout<<"\n age:"<<age;
+      cout<<"\n address:"<<add;
+        cout<<"\n birth date:"<<birth;
+      cout<<"\n contact no:"<<phone;
+     cout<<"\n blood group:"<<bdgrp;
+}
+class academics
+{
+protected:
+ char quali[10];
+       float hsc,ssc;
+         char course[50];
+      public:
+            void accept2();
+            void display2();
+};
+void academics::accept2()
+{
+      cout<<"\n enter your qualification:";
+        cin>>quali;
+      hs:
+            cout<<"\n enter your HSC percentage:";
+           cin>>hsc;
+   if(hsc<0)
+      {
+           cout<<"\n enter positive value:";
+              goto hs;
+      }
+else if(hsc>101)
+{
+        cout<<"\n enter valid value:";
+        goto hs;
+}
+else
+{
+      ss:
+    cout<<"\n enter your SSC percentage:";
+    cin>>ssc;
+       if(ssc<0)
+    {
+        cout<<"\n enter positive value";
+              goto ss;
+     }
+ else if(ssc>101)
+{
+       cout<<"\n enter valid value";
+            goto ss;
+}
+else
+{
+       cout<<"\n enter additional courses:";
+       cin>>course;
+}
+ }
+ }
+void academics::display2()
+    {
+        cout<<"\n Qualification:"<<quali;
+         cout<<"\n HSC percentage:"<<hsc;
+          cout<<"\n SSC percentage:"<<ssc;
+           cout<<"\n additional courses:"<<course;
+    }
+class professional
+   {
+       protected:
+             int exp;
+            char cmp[60];
+           char desig[70];
+        public:
+         void accept3();
+        void display3();
+};
+void professional::accept3()
+{
+      cout<<"\n enter your experience:";
+      cin>>exp;
+     cout<<"\n enter your current company:";
+      cin>>cmp;
+      cout<<"\n enter your designation:";
+       cin>>desig;
+}
+void professional::display3()
+{
+      cout<<"\n experience"<<exp;
+      cout<<"\n current company"<<cmp;
+     cout<<"\n designation:"<<desig;
+}
+class biodata:public personal,public professional,public academics
+{
+ public:
+   void accept()
+   {
+     personal::accept1();
+    academics::accept2();
+     professional::accept3();
+}
+void display()
+{
+     personal::display1();
+     academics::display2();
+      professional::display3();
+}
+};
+int main()
+{
+       biodata b;
+       b.accept();
+      b.display();
+    return 0;
+}
